@@ -7,3 +7,9 @@ Lorem ipsum dolor sit __amet__, consectetur adipisicing.  Cumque dignissimos, cu
 * Item 2
 * Item 3
 * Testing 123
+
+```swift
+struct Animal {
+  let nickName: String?
+}
+```
