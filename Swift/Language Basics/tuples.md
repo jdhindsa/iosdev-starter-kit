@@ -23,7 +23,7 @@ struct Animal {
 Testing 123
 `
 
-[HackingWithSwift.com](https://www.hackingwithswift.com
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
 ```
 {
