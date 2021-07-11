@@ -114,6 +114,19 @@ if let savedData = savedFavoriteBytesData {
 ```
 In the above snippet, ```savedFavoriteBytesData``` was an optional Data variable, so I used optional binding to unwrap it first.
 
+If you want to make sure the file gets written to disk and is not corrupted even in the event that the system should crash, this API call can be used:
+
+```func write(to url: URL, atomically useAuxiliaryFile: Bool, encoding enc: UInt) throws```
+
+Example:
+```swift
+try stringData?.write(to: catsURL, atomically: true, encoding: .utf8)
+let catsChallengeString = try String(contentsOf: catsURL)
+print(catsChallengeString)
+```
+<img src="Images/catsString.png" width="150">
+
+
 ### JSON
 
 ### Property Lists
