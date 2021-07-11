@@ -64,6 +64,15 @@ There is a handy property called ```lastPathComponent``` that will return you th
 ```swift
 stringURL.lastPathComponent
 ```
+
+There is a temporary directory that FileManager can give you access to if you need a place to store short-term data that you do not ever plan on persisting between app launches:
+```swift
+let temporaryDirectoryURL = FileManager.default.temporaryDirectory
+```
+
+This directory called ```tmp``` is at the same level as the ```Documents``` directory in the user's sandbox.
+
+
 #### Data Types
 <img src="Images/DataTypes-2.png" width="250">
 
@@ -152,6 +161,7 @@ do {
 ```
 
 The ```Sample``` type in this example, must conform to the ```Codable``` protocol in order for the ```JSONDecoder``` to work.
+
 
 
 
