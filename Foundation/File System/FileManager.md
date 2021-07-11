@@ -162,7 +162,16 @@ do {
 
 The ```Sample``` type in this example, must conform to the ```Codable``` protocol in order for the ```JSONDecoder``` to work.
 
+If your JSON file is stored within the user's documents directory instead of within the app's ```Bundle```, you'd use the same method as mentioned at the top of this article:
 
+```swift
+let jsonURL = URL(fileURLWithPath: "jsondata", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+```
+Then, you can use the ```JSONDecoder()``` as before to decode the data at ```jsonURL```.
 
+If you want to see all the files located in the documents directory, you can use this handy method:
+```swift
+print((try? FileManager.default.contentsOfDirectory(atPath: FileManager.documentsDirectoryURL.path)) ?? [])
+```
 
 ### Property Lists
