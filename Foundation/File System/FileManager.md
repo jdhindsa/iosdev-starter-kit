@@ -64,6 +64,45 @@ There is a handy property called ```lastPathComponent``` that will return you th
 ```swift
 stringURL.lastPathComponent
 ```
+#### Data Types
+<img src="Images/DataTypes-2.png" width="250">
+
+In order to read and write data from disk, you would do the following:
+```swift
+let favoriteBytes: [UInt8] = [
+  240,          159,          152,          184,
+  240,          159,          152,          185,
+  0b1111_0000,  0b1001_1111,  0b1001_1000,  186,
+  0xF0,         0x9F,         0x98,         187
+]
+
+// Convert to Data
+let favoriteBytesData = Data(favoriteBytes)
+// Create the URL for the exact file name where you will save this data
+let favoriteBytesURL = URL(
+  fileURLWithPath: "Favorite Bytes",
+  relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("txt")
+
+print(FileManager.documentsDirectoryURL.path)
+print(favoriteBytesURL.lastPathComponent)
+
+// Saving data to disk...
+do {
+  try favoriteBytesData.write(to: favoriteBytesURL)
+} catch {
+  print("Error occurred!")
+}
+
+// Loading data from disk...
+var savedFavoriteBytesData: Data?
+do {
+  savedFavoriteBytesData = try Data(contentsOf: favoriteBytesURL)
+} catch {
+  print("Error occurred!")
+}
+```
+
+You can also check that the saved data you've retrieved from disk is the same as the data you wrote to disk by using the equality operator ```==```
 
 ### Files
 
