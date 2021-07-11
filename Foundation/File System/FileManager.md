@@ -203,3 +203,5 @@ private func encodeJSONToDisk() {
 [Hacking With Swift's explanation of Codable Hierarchies](https://www.hackingwithswift.com/books/ios-swiftui/working-with-hierarchical-codable-data)
 
 ### Property Lists
+
+This section is about saving and reading from Property Lists
