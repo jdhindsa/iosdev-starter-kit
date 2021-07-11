@@ -9,7 +9,7 @@ You can store different data types in iOS:
 
 <img src="Images/DataTypes.png" width="150">
 
-### FileManager
+### Files & Data
 To access the user's documents directory, create an extension that contains a computed property to grab the user's document directory:
 ```swift
 import Foundation
@@ -104,6 +104,16 @@ do {
 
 You can also check that the saved data you've retrieved from disk is the same as the data you wrote to disk by using the equality operator ```==```
 
-### Files
+Now, if you know that the data you've saved to a file in the documents directory contains string data, you can retrieve that string data and print it's content or use it however you like:
 
-### URLs
+```swift
+if let savedData = savedFavoriteBytesData {
+  let stringData = String(data: savedData, encoding: .utf8)
+  print(stringData!)
+}
+```
+In the above snippet, ```savedFavoriteBytesData``` was an optional Data variable, so I used optional binding to unwrap it first.
+
+### JSON
+
+### Property Lists
