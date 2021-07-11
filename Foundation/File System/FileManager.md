@@ -174,4 +174,28 @@ If you want to see all the files located in the documents directory, you can use
 print((try? FileManager.default.contentsOfDirectory(atPath: FileManager.documentsDirectoryURL.path)) ?? [])
 ```
 
+#### JSON Encoder
+
+To encode data you have stored in your app and save it to disk, you would use the following code (substitute the variable names as required):
+```swift
+import Foundation
+
+private func encodeJSONToDisk() {
+	let encoder = JSONEncoder()
+
+	// Two Steps require a do-try-catch statement since both of them are throwing methods
+	do {
+		// 1. Encoding data
+		let taskData = try encoder.encode(appTaskData.first?.tasks.last)
+		let taskJSONURL = URL(fileURLWithPath: "Task", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+		// 2. Saving the data to ask.
+		try taskData.write(to: taskJSONURL, options: .atomicWrite)
+		// atomicWrite makes sure that it writes to a temp file, then to the permanent file
+		// This is useful in case a crash might happen
+	} catch let error {
+		print(error)
+	}
+}
+```
+
 ### Property Lists
