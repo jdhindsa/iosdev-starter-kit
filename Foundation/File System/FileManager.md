@@ -129,4 +129,30 @@ print(catsChallengeString)
 
 ### JSON
 
+If JSON files are stored within your XCode project, you can access that JSON data using the below API call:
+
+```Bundle.main.url(forResource: <String?>, withExtension: <String?>)```
+
+- ```Bundle``` is a representation of your app, it's code and it's resources.
+All the files you add in XCode under your app target are referred to as the "App Bundle"
+- ```main``` represents the current executable (in this case, your app)
+- ```forResource``` is the name of the parameter you want the URL for
+- ```withExtension``` is the extension of the file
+
+#### JSON Decoder
+In order to decode JSON data, we'd use the following code (as an example):
+```swift
+let decoder = JSONDecoder()
+do {
+  let sampleData = try Data(contentsOf: sampleJSONData)
+  let sample = try decoder.decode(Sample.self, from: sampleData)
+} catch let error {
+  print(error)
+}
+```
+
+The ```Sample``` type in this example, must conform to the ```Codable``` protocol in order for the ```JSONDecoder``` to work.
+
+
+
 ### Property Lists
