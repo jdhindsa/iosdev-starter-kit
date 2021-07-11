@@ -30,6 +30,15 @@ FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
 We can exclude the "FileManager" part of that, but since "default" is a Swift keyword, we need to surround it with backticks to tell the compiler that it is escaping.
 
+If you want to see what the path of the documents directory actually is, you can use the ```path``` property:
+
+```swift
+FileManager.documentsDirectoryURL.path
+```
+
+The ```path``` property just returns a string containing the actual path to the documents directory on disk.
+
+
 
 ### Files
 
