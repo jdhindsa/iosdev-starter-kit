@@ -59,6 +59,12 @@ In method # 2, we instead use ```appendingPathComponent(_:)``` and ```appendingP
 
 Both methods create the same result.
 
+There is a handy property called ```lastPathComponent``` that will return you the filename and the extension as long as the URL is a file itself.
+
+```swift
+stringURL.lastPathComponent
+```
+
 ### Files
 
 ### URLs
