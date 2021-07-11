@@ -40,7 +40,7 @@ The ```path``` property just returns a string containing the actual path to the 
 
 Now, there are mainly 2 ways of creating a file in the documents directory:
 
-Method # 1:
+**Method # 1:**
 ```swift
 let remindersDataURL = URL(fileURLWithPath: "Reminders", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("txt")
 
@@ -49,7 +49,7 @@ print(remindersDataURL.path)
 
 The ```URL(fileURLWithPath:relativeTo:).appendingPathExtension(_:)``` method creates a new file with an extension that is specified inside the documents directory.
 
-Method # 2:
+**Method # 2:**
 ```swift
 let stringURL = FileManager.documentsDirectoryURL.appendingPathComponent("String").appendingPathExtension("txt")
 print(stringURL.path)
