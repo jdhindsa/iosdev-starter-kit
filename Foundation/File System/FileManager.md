@@ -198,4 +198,8 @@ private func encodeJSONToDisk() {
 }
 ```
 
+**Codable Hierarchies**
+
+[Hacking With Swift's explanation of Codable Hierarchies](https://www.hackingwithswift.com/books/ios-swiftui/working-with-hierarchical-codable-data)
+
 ### Property Lists
