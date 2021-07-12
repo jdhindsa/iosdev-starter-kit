@@ -260,3 +260,7 @@ private func loadPlistFile() {
 	}
 }
 ```
+
+**Apple Documentation**
+
+[FileManager in Apple Docs](https://developer.apple.com/documentation/foundation/filemanager)
