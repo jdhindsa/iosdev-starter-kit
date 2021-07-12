@@ -170,6 +170,9 @@ let task = session.dataTask(with: url) { data, response, error in
     guard let data = data else {
         return
     }
+
+    // If required, do your JSON Decoding here.  Otherwise, you can just print the data as a String.
+    
     if let result = String(data: data, encoding: .utf8) {
         print(result)
     }
