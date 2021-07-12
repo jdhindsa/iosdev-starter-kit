@@ -144,6 +144,8 @@ myDefaultSession.configuration.allowsConstrainedNetworkAccess
 #### Create a URLSession and a Data Task
 
 How ```URLSession``` works:
+
+
 <img src="Images/URLSession.png" width="250">
 
 Types of Data Tasks:
