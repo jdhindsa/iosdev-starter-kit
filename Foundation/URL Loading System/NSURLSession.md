@@ -4,7 +4,7 @@
 
 <img src="Images/NSURLSession-1.png" width="250">
 
-To understand NSURLSession, we need to have an understanding of Concurrency first.  Essentially, a CPU can have many threads so individual pieces of work can be allocated to particular threads.
+To understand ```NSURLSession```, we need to have an understanding of Concurrency first.  Essentially, a CPU can have many threads so individual pieces of work can be allocated to particular threads.
 
 We have the following threading options in general:
 
@@ -16,7 +16,7 @@ In iOS13, we also have the Combine framework that has built-in threading:
 
 #### Operation Queues
 
-If we have a scenario where an operation is blocking the UI, we can setup a custom subclass of ```Operation``` and then add that operation to the OperationQueue within the app to execute that operation on a separate thread.
+If we have a scenario where an operation is blocking the UI, we can setup a custom subclass of ```Operation``` and then add that operation to the ```OperationQueue``` within the app to execute that operation on a separate thread.
 
 For example, here is a subclass of ```Operation```:
 
@@ -97,5 +97,50 @@ DispatchQueue.global(qos: .userInitiated).async {
 }
 ```
 
-**Note**, the DispatchQoS class has many different enumeration options for quality of service:
+**Note**, the ```DispatchQoS``` class has many different enumeration options for quality of service:
 [DispatchQoS class docs](https://developer.apple.com/documentation/dispatch/dispatchqos)
+
+#### Create a Session Configuration
+
+<img src="Images/SessionConfiguration.png" width="300">
+
+[URLSessionConfiguration](https://developer.apple.com/documentation/foundation/urlsessionconfiguration)
+
+To create a new URLSession, we can use the ```shared``` singleton on the ```URLSession``` object, like this:
+```swift
+let sharedSession = URLSession.shared
+````
+
+The configuration object on the ```URLSession``` can be accessed since it's a property.  However, since the configuration is already attached to the session, all it's properties are read-only:
+```swift
+sharedSession.configuration.allowsCellularAccess = false
+````
+
+In order to create a new URLSessionConfiguration object, you'd write the following code:
+
+```swift
+let myDefaultConfiguration = URLSessionConfiguration.default // <-- if you want a default URLSessionConfiguration object
+let myEmpheralConfiguration = URLSessionConfiguration.ephemeral // <-- if you want a ephemeral URLSessionConfiguration object
+let myBackgroundConfiguration = URLSessionConfiguration.background(withIdentifier: "com.raywenderlich.com.sessions") // <-- if you want a background URLSessionConfiguration object
+````
+
+Once you create your own URLSessionConfiguration (either ```default```, ```ephemeral``` or ```background```), you can modify ```URLSessionConfiguration```'s properties
+```swift
+myDefaultConfiguration.allowsCellularAccess = false
+myDefaultConfiguration.allowsCellularAccess
+myDefaultConfiguration.allowsExpensiveNetworkAccess = false
+myDefaultConfiguration.allowsExpensiveNetworkAccess
+myDefaultConfiguration.allowsConstrainedNetworkAccess = false
+myDefaultConfiguration.allowsConstrainedNetworkAccess
+````
+
+To create a new ```URLSession``` using your previously made ```URLSessionConfiguration```, you'd write:
+```swift
+let myDefaultSession = URLSession(configuration: myDefaultConfiguration)
+myDefaultSession.configuration.allowsConstrainedNetworkAccess
+````
+**Note**, properties that were changed above on ```myDefaultConfiguration``` will be reflected when you access the ```URLSessionConfiguration``` object you created on your ```URLSession```.
+
+#### Create a URLSession
+
+<img src="Images/URLSession.png" width="250">
