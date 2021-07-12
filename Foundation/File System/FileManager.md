@@ -204,4 +204,59 @@ private func encodeJSONToDisk() {
 
 ### Property Lists
 
-This section is about saving and reading from Property Lists
+This section is about saving and reading from Property Lists.  
+
+#### Saving a plist to disk
+
+Here are the supported Property List data types:
+
+<img src="Images/PropertyListDataTypes.png" width="150">
+
+To save your data to a Plist file on disk, you'd use similar logic that you use to encode JSON to disk.  The only difference is the class that you instantiate which is called ```PropertyListEncoder```.
+
+Here is a code snippet that shows how you would create the exact path with which you'd like to save your Plist to disk:
+
+```swift
+let tasksPListURL = URL(fileURLWithPath: "TaskPList", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+```
+
+... and this code snippet is how you would actually save the data to disk in a plist file:
+
+```swift
+private func saveJSONToPList() {
+		let encoder = PropertyListEncoder()
+		encoder.outputFormat = .xml
+
+		print("*** Task List Plist URL: \(tasksPListURL.path)")
+
+		do {
+				let tasksData = try encoder.encode(prioritizedTasks)
+				try tasksData.write(to: tasksPListURL, options: .atomicWrite)
+		} catch let error {
+				print(error)
+		}
+}
+```
+
+Note the use of ```encoder.outputFormat = .xml```.  You should always make sure that you are setting the output format to XML for a Property List you plan on saving to disk.
+
+#### Reading a plist file from disk
+
+In order to read a plist file from disk, we can use the following code:
+
+```swift
+private func loadPlistFile() {
+		guard FileManager.default.fileExists(atPath: tasksPListURL.path) else {
+				return
+		}
+
+		let decoder = PropertyListDecoder()
+
+		do {
+				let tasksData = try Data(contentsOf: tasksPListURL)
+				prioritizedTasks = try decoder.decode([PrioritizedTasks].self, from: tasksData)
+		} catch let error {
+				print(error)
+		}
+}
+```
