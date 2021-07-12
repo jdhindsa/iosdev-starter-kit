@@ -224,17 +224,17 @@ let tasksPListURL = URL(fileURLWithPath: "TaskPList", relativeTo: FileManager.do
 
 ```swift
 private func saveJSONToPList() {
-		let encoder = PropertyListEncoder()
-		encoder.outputFormat = .xml
+	let encoder = PropertyListEncoder()
+	encoder.outputFormat = .xml
 
-		print("*** Task List Plist URL: \(tasksPListURL.path)")
+	print("*** Task List Plist URL: \(tasksPListURL.path)")
 
-		do {
-				let tasksData = try encoder.encode(prioritizedTasks)
-				try tasksData.write(to: tasksPListURL, options: .atomicWrite)
-		} catch let error {
-				print(error)
-		}
+	do {
+		let tasksData = try encoder.encode(prioritizedTasks)
+		try tasksData.write(to: tasksPListURL, options: .atomicWrite)
+	} catch let error {
+		print(error)
+	}
 }
 ```
 
@@ -246,17 +246,17 @@ In order to read a plist file from disk, we can use the following code:
 
 ```swift
 private func loadPlistFile() {
-		guard FileManager.default.fileExists(atPath: tasksPListURL.path) else {
-				return
-		}
+	guard FileManager.default.fileExists(atPath: tasksPListURL.path) else {
+		return
+	}
 
-		let decoder = PropertyListDecoder()
+	let decoder = PropertyListDecoder()
 
-		do {
-				let tasksData = try Data(contentsOf: tasksPListURL)
-				prioritizedTasks = try decoder.decode([PrioritizedTasks].self, from: tasksData)
-		} catch let error {
-				print(error)
-		}
+	do {
+		let tasksData = try Data(contentsOf: tasksPListURL)
+		prioritizedTasks = try decoder.decode([PrioritizedTasks].self, from: tasksData)
+	} catch let error {
+		print(error)
+	}
 }
 ```
