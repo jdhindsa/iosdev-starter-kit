@@ -141,6 +141,37 @@ myDefaultSession.configuration.allowsConstrainedNetworkAccess
 ````
 **Note**, properties that were changed above on ```myDefaultConfiguration``` will be reflected when you access the ```URLSessionConfiguration``` object you created on your ```URLSession```.
 
-#### Create a URLSession
+#### Create a URLSession and a Data Task
 
+How ```URLSession``` works:
 <img src="Images/URLSession.png" width="250">
+
+Types of Data Tasks:
+
+<img src="Images/DataTasks.png" width="250">
+
+Here is an example snippet of how you'd execute a network request:
+
+```swift
+import UIKit
+
+let configuration = URLSessionConfiguration.default
+let session = URLSession(configuration: configuration)
+guard let url = URL(string: "https://itunes.apple.com/search?media=music&entity=song&term=cohen") else { fatalError() }
+
+let task = session.dataTask(with: url) { data, response, error in
+    // Everything occurs in the trailing closure...
+    // Note, for the response parameter if you actually make an HTTP request, then this parameter is of type HTTPURLResponse
+    // Check if the HTTPURLResponse's status code is in the range of 200 - 299
+    guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else { return }
+
+    guard let data = data else {
+        return
+    }
+    if let result = String(data: data, encoding: .utf8) {
+        print(result)
+    }
+}
+task.resume() // Data tasks start off in the suspended state by default, we need to resume it to actually start the network call.
+
+```
