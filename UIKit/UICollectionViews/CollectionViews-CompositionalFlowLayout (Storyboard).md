@@ -116,6 +116,92 @@ The Diffable Data source has two classes associated to it:
 
 ### Implementing Diffable Data Source
 
+The first step to implement Diffable Data sources is to setup a strong reference to the Diffable Data Source at the top of your view controller:
+
+```swift
+let dataSource: UICollectionViewDiffableDataSource<<#SectionIdentifierType: Hashable#>, <#ItemIdentifierType: Hashable#>>
+```
+
+As you can see from the method signature (as well as the link below), the diffable data source is a generic class that takes 2 typed parameters:
+1. A section class
+2. An item class
+
+Both of these classes conform to the ```Hashable``` protocol which means you need to use a unique identifier to identify the section and an item.
+
+**If you have only 1 section in your app**, you can simply use an enum with a single case in it to indicate the single section in the app:
+
+```swift
+    enum Section {
+        case main
+    }
+```
+
+So, we can now setup the data source:
+
+```swift
+let dataSource: UICollectionViewDiffableDataSource<Section, Int>
+```
+
+The ```Section``` is coming from the enum which maps to the Sections in the data, but since we are only displaying integers on the screen in this example the item can be of type ```Int```.
+
+Now, the View Controller will throw an error indicating that you must initialize the class.  <em>We have to reference the collection view to do that</em>.  We can either do the following:
+1. Explicitly unwrap optional representing the data source
+2. Lazily load the data source
+
+Therefore, we change the data source's declaration from ```let``` to ```var```. 
+
+```swift
+var dataSource: UICollectionViewDiffableDataSource<Section, Int>
+```
+
+Now, we can begin implementing the diffable data source.  The first step is to use the following method:
+
+```swift
+
+    func configureDataSource() {
+        // The 2nd argument is a closure that tells the collection view how to map the data to each cell
+        // The closure accepts 3 arguments:
+        // 1. the collection view to use
+        // 2. index path of the cell
+        // 3. the item identifier (or UUID) of the data to show (in this case it's an integer called number)
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) { (collectionView, indexPath, number) -> UICollectionViewCell? in
+            
+        }
+    }
+```
+
+***Note***, you must pass in the generic types after the method name.  For example, ```<Section, Int>```.
+
+#### The 4 Key Parts of setting up a Diffable Data Source
+
+```swift
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) { (collectionView, indexPath, number) -> UICollectionViewCell? in
+            // PART 1: Instruct the data source on how to setup a cell given a single item of data
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCell.reuseIdentifier, for: indexPath) as? NumberCell else {
+                fatalError("Cannot create new cell")
+            }
+            cell.label.text = number.description
+            return cell
+        }
+        // PART 2: Provide the data source with it's initial snapshot
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>() // Snapshot defines it's data in terms of sections and items
+        initialSnapshot.appendSections([.main]) // Add a section using appendSections, it is passed an array of sections
+        // PART 3: Add items to the section
+        initialSnapshot.appendItems(Array(1...100), toSection: .main) // If there is only 1 section, you can omit the toSection: parameter
+        // PART 4: Apply the snapshot to the datasource
+        dataSource.apply(initialSnapshot, animatingDifferences: false)
+    }
+
+```
+
+From the snippet above, the key parts are:
+1. Instruct the data source on how to setup a cell given a single item of data
+2. Provide the data source with it's initial snapshot; you must also add any sections you need
+3. Add items to the section (if you have a single section, you can omit the ```toSection:``` parameter from ```appendItems(_: toSection:)```
+4. Apply the snapshot to the data source
+
+[Diffable Data Sources](https://developer.apple.com/documentation/uikit/uicollectionviewdiffabledatasource#)
+
 
 Links:
 [collectionViewLayout](https://developer.apple.com/documentation/uikit/uicollectionview/1618047-collectionviewlayout#)
