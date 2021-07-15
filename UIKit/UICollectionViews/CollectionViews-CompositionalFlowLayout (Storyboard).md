@@ -80,7 +80,11 @@ The next steps would be to:
 1. Add any UI elements inside the prototype cell
 2. Use Auto Layout to constrain those elements
 3. Go to the Attributes Inspector (with the Collection View Cell highlighted in the Document Outline) and set the reuse identifier
+4. Create a custom class that subclasses ```UICollectionViewCell```
+5. Click on the Collection View cell in the Storyboard and go to the Attributes Inspector.  Set the class to the newly created class
+6. Create any ```IBOutlet```s that you need to create in the new custom cell class
 
+### Using Diffable Data Source
 
 
 
