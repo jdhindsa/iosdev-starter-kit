@@ -180,3 +180,17 @@ let task = session.dataTask(with: url) { data, response, error in
 task.resume() // Data tasks start off in the suspended state by default, we need to resume it to actually start the network call.
 
 ```
+
+### Downloading & Uploading
+
+You can set (and change at any time) the priority of a data task:
+
+<img src="Images/Priorities.png" width="250">
+
+Also, data tasks have a built in caching policy as per Apple's documentation:
+
+<img src="Images/Caching.png" width="250">
+
+[Accessing Cached Data](https://developer.apple.com/documentation/foundation/url_loading_system/accessing_cached_data)
+
+
