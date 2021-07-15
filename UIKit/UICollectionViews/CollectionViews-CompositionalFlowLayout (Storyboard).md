@@ -200,6 +200,42 @@ From the snippet above, the key parts are:
 3. Add items to the section (if you have a single section, you can omit the ```toSection:``` parameter from ```appendItems(_: toSection:)```
 4. Apply the snapshot to the data source
 
+Considering that we have not applied anytype of formatting to the UICollectionViewCell and have not added any code in the ```configureLayout()``` method to make the layout look more like a grid, the following steps will accomplish that.  Let's say I want a grid with 5 columns (perfect squares).  You would need to make the following changes:
+
+```swift
+    func configureLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
+        let item: NSCollectionLayoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.2))
+        let group: NSCollectionLayoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+        let section: NSCollectionLayoutSection = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+```
+
+**Note**, the use of ```contentInsets``` to add spacing around items, groups and sections.
+
+Then, in ```configureDataSource()``` you'd need to add some configuration to the cell in ```configureDataSource()```
+
+```swift
+            cell.backgroundColor = .systemTeal
+            cell.label.textColor = .white
+            cell.layer.borderWidth = 0.75;
+            cell.layer.borderColor = UIColor.red.cgColor
+            cell.layer.masksToBounds = true
+            cell.clipsToBounds = true
+```
+
+Here's what you would see after these changes:
+
+<img src="Images/GridLayout.png" width="300">
+
 [Diffable Data Sources](https://developer.apple.com/documentation/uikit/uicollectionviewdiffabledatasource#)
 
 
