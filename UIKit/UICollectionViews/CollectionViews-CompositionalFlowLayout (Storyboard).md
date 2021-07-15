@@ -84,9 +84,37 @@ The next steps would be to:
 5. Click on the Collection View cell in the Storyboard and go to the Attributes Inspector.  Set the class to the newly created class
 6. Create any ```IBOutlet```s that you need to create in the new custom cell class
 
-### Using Diffable Data Source
+### What is the Diffable Data Source?
 
+A collection view has 2 main responsibilities:
+1. The collection view layout
+2. The data source
 
+<img src="Images/Responsibilities.png" width="300">
+
+What does the Data Source actually do?
+
+<img src="Images/DataSource.png" width="300">
+
+The snapshot is a recording of the current state of the UI, which is stored in the data source.
+
+<img src="Images/Snapshots.png" width="300">
+
+Once the data source has the updated snapshot, it can communicate to the Collection View and tell it what to display on screen:
+
+<img src="Images/SnapshotToCollectionView.png" width="300">
+
+Any time the snapshot changes, the data source can "diff" the snapshots to determine what has changed.  This is what allows the DiffableDataSource to tell the Collection View how to reorder it's contents.
+
+<img src="Images/DiffingDataSources.png" width="300">
+
+The Diffable Data source has two classes associated to it:
+1. ```UICollectionViewDiffableDataSource```
+2. ```NSDiffableDataSourceSnapshot```
+
+<img src="Images/Classes.png" width="300">
+
+### Implementing Diffable Data Source
 
 
 Links:
