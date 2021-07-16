@@ -51,3 +51,11 @@ When the Scroll Direction property in Attributes Inspector is set to ```Vertical
 A collection view's cell size (width & height), headers, footers and insets can all be configured within the Size Inspector:
 
 <img src="Images/SizeInspector-2.png" width="300">
+
+One big advantage of using a Flow Layout is that the properties to change the way the collection view looks are all baked into the Storyboard.  For example, you can change the number of prototype cells displayed in the storyboard and then modify the cell spacing or line spacing to visually see how this will look in your UI.
+
+**Note**, changing the number of prototype cells has no effect on what actually happens when your app runs.  This is just a visual feature of Storyboards.
+
+<img src="Images/AttributesInspector-SetNumCells.png" width="300">
+<img src="Images/SizeInspector-CellSpacing.png" width="300">
+
