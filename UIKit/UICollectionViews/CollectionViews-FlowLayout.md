@@ -41,4 +41,13 @@ Here are some differences between Flow Layout and Compositional Layout:
 
 <img src="Images/Differences.png" width="300">
 
+When creating a Compositional Layout, you specify the scroll direction at the group level.  Whereas, in a Flow Layout, you set it at the collection view level.
 
+When the Scroll Direction property in Attributes Inspector is set to ```Vertical```, it means your collection view will be layed out in a series of rows.  ```Horizontal``` means columns.
+
+<img src="Images/ScrollDirection.png" width="300">
+
+
+A collection view's cell size (width & height), headers, footers and insets can all be configured within the Size Inspector:
+
+<img src="Images/SizeInspector-2.png" width="300">
