@@ -65,4 +65,26 @@ One big advantage of using a Flow Layout is that the properties to change the wa
 
 Remember, in a Flow Layout **any** object can act as the Collection View's data source.  Even the View Controller class that __contains__ the collection view can act as the collection view's data source.
 
+To accomplish this, you would do the following:
+
+1. Tell the collection view object in the View Controller that it's data source property is the view controller itself.  For example, in ```viewDidLoad()```:
+
+
+```swift
+collectionView.dataSource = self
+```
+
+2. Then, implement the required protocol methods that are part of ```UICollectionViewDataSource```:
+
+```swift
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0 // replace with the correct code
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell() // replace with the correct code
+    }
+}
+```
 
