@@ -1,5 +1,7 @@
 ## Creating a Collection View using Flow Layout (Storyboard)
 
+### Flow Layout Objects & Creating a Flow Layout in IB
+
 There are advantages and disadvantages of using Compositional Layout.  A few disadvantages include:
 - It is only available in iOS 13 and above
 - It has limited functionality as it is still considered to be new (is this still the case in 2021?)
@@ -58,4 +60,9 @@ One big advantage of using a Flow Layout is that the properties to change the wa
 
 <img src="Images/AttributesInspector-SetNumCells.png" width="300">
 <img src="Images/SizeInspector-CellSpacing.png" width="300">
+
+### Setting up a Data Source
+
+Remember, in a Flow Layout **any** object can act as the Collection View's data source.  Even the View Controller class that __contains__ the collection view can act as the collection view's data source.
+
 
