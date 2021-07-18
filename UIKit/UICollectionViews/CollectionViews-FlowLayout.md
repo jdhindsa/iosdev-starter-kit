@@ -210,3 +210,5 @@ func collectionView(_ collectionView: UICollectionView, layout collectionViewLay
 <img src="Images/ContentInsets.png" width="300">
 
 Reference: [UICollectionViewDelegateFlowLayout](https://developer.apple.com/documentation/uikit/uicollectionviewdelegateflowlayout?language=objc#)
+
+### Section Headers & footers
