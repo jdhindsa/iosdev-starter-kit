@@ -81,10 +81,58 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0 // replace with the correct code
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell() // replace with the correct code
     }
 }
 ```
 
+It's usually a better idea to implement the **Separation of Concerns** concept in regards to a ```UIViewController``` that has a ```UICollectionView``` inside of it and the data source associated to that ```UICollectionView```.
+
+So, instead of the above method, we are going to do the following:
+
+1. Remove any previous code or storyboard changes that were implemented to setup a data source.
+2. Create a custom DataSource class that will contain all the necessary ```UICollectionViewDataSource``` methods:
+
+```swift
+import UIKit
+
+class DataSource: NSObject, UICollectionViewDataSource {
+
+    let emoji = Emoji.shared
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else {
+            fatalError("Cell cannot be created!")
+        }
+
+        let category = emoji.sections[indexPath.section]
+        let emoji = self.emoji.data[category]?[indexPath.item] ?? ""
+
+        emojiCell.emojiLabel.text = emoji
+
+        return emojiCell
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return emoji.sections.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.emoji.data[emoji.sections[section]]?.count  ?? 0
+    }
+}
+```
+
+3. In your View Controller, create a variable with a strong reference to the data source:
+
+```swift
+let dataSource = DataSource()
+```
+
+4. Associate this new ```DataSource``` instance to the collection view's ```dataSource``` property:
+
+```swift
+collectionView.dataSource = dataSource
+```
