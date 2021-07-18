@@ -213,4 +213,69 @@ Reference: [UICollectionViewDelegateFlowLayout](https://developer.apple.com/docu
 
 ### Section Headers & footers
 
-Testing Git Kraken
+If you need to add section headers or footers to your collection view, they are called Supplementary Views:
+
+<img src="Images/SupplementaryViews.png" width="300">
+
+To add a Supplementary View in Interface Builder, click on the Collection View in the Document Outline, then go to the Attributes Inspector and select either/both "Section Header" or "Section Footer" under the Accessories section:
+
+<img src="Images/HowToAddSupplementaryViewsInIB.png" width="300">
+
+After you do this, you should see a "Collection Reusable View" nested under the Collection View object in the Document Outline
+
+<img src="Images/ReusableView.png" width="300">
+
+In the same way that iOS dequeues and reuses collection view cells, the same logic applies to Supplementary Views:
+
+<img src="Images/ReuseQueue.png" width="300">
+
+#### Creating a Supplementary View
+
+To create a Supplementary View, it's a good idea to associate it to a custom subclass of ```UICollectionReusableView```:
+
+```swift
+import UIKit
+
+class EmojiHeaderView: UICollectionReusableView {
+    static let reuseIdentifier = String(describing: EmojiHeaderView.self)
+}
+```
+
+Then, in IB you will need to associate the Reusable View to the new custom class and set the Reuse Identifier:
+
+<img src="Images/AssociatedClass.png" width="300">
+<img src="Images/ReuseIdentifier.png" width="300">
+
+A reusable view is a ```UIView```.  Which means that you can add anything you want into it.  In this example, we are going to add a UILabel, pinned 8 points from the leading anchor and 8 points from the trailing anchor as well as vertically centered (not shown since it is straightforward).
+
+The data that the reusable view needs will come from the data source, just like we do for the collection view cells.
+
+In our ```DataSource()``` class, we can add another method that is an optional method in the ```UICollectionViewDataSource``` protocol.  This method is called:
+
+```swift
+func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+}
+```
+
+**Note**, the indexPath is the section for which you are creating this header/footer.  The ```viewForSupplementaryElementOfKind``` property represents:
+
+- a string that represents ```UICollectionElementKindSectionHeader``` or ```UICollectionElementKindSectionFooter```
+
+```swift
+guard let emojiHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmojiHeaderView.reuseIdentifier, for: indexPath) as? EmojiHeaderView else {
+    fatalError("Cannot create EmojiHeaderView")
+}
+return emojiHeaderView
+```
+
+Since the ```EmojiHeaderView.reuseIdentifier``` is attached to a Header in Interface Builder, we are asking the collection view to dequeue a header reusable view.
+
+It's always a good to be safe and use a ```guard let``` to create a reusable cell/supplementary view, like this:
+
+```swift
+guard let emojiHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmojiHeaderView.reuseIdentifier, for: indexPath) as? EmojiHeaderView else {
+    fatalError("Cannot create EmojiHeaderView")
+}
+return emojiHeaderView
+```
