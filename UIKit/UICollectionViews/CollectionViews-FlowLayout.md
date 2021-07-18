@@ -149,11 +149,62 @@ What we can do, however, is use the flow layout delegate to provide information 
 ```swift
 import UIKit
 
-class EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
+class EmojiCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 
 }
 ```
 
-Reference: [UICollectionViewDelegateFlowLayout](https://developer.apple.com/documentation/uikit/uicollectionviewdelegateflowlayout?language=objc#)
+2. Implement the required methods:
+```swift
 
-[Diffable Data Sources](https://developer.apple.com/documentation/uikit/uicollectionviewdiffabledatasource#)
+let numberOfItemsPerRow: CGFloat
+let interItemSpacing: CGFloat
+
+init(numberOfItemsPerRow: CGFloat, interItemSpacing: CGFloat) {
+    self.numberOfItemsPerRow = numberOfItemsPerRow
+    self.interItemSpacing = interItemSpacing
+}
+
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let maxWidth = UIScreen.main.bounds.width
+    let totalSpacing = interItemSpacing * numberOfItemsPerRow
+    let itemWidth = (maxWidth - totalSpacing)/numberOfItemsPerRow
+    return CGSize(width: itemWidth, height: itemWidth)
+}
+
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return interItemSpacing
+}
+```
+
+3. Wire up the collection view's delegate in the View Controller:
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    let dataSource = DataSource()
+    let delegate = EmojiCollectionViewDelegate(numberOfItemsPerRow: 6, interItemSpacing: 8)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        collectionView.dataSource = dataSource
+        collectionView.delegate = delegate
+    }
+}
+```
+
+If you run the app at this point, the sections will be touching each other (vertically) as you have not indicated any sort of spacing between sections (ie. content insets)
+
+4. Implement the following delegate method:
+
+```swift
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+}
+```
+
+Reference: [UICollectionViewDelegateFlowLayout](https://developer.apple.com/documentation/uikit/uicollectionviewdelegateflowlayout?language=objc#)
