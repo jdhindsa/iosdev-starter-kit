@@ -136,3 +136,24 @@ let dataSource = DataSource()
 ```swift
 collectionView.dataSource = dataSource
 ```
+
+### Adjusting Layout in Code
+
+One noticeable difference between using Compositional Layout and Flow Layouts is that you cannot configure (in Interface Builder) the spacing between cells and the number of cells in each row like you can when you use ```NSCollectionLayoutDimension```.
+
+What we can do, however, is use the flow layout delegate to provide information about the layout.  We will use a similar approach as we did with the data source and decouple the integration.
+
+<img src="Images/LayoutDelegate.png" width="300">
+
+1. Implement a new class:
+```swift
+import UIKit
+
+class EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
+
+}
+```
+
+Reference: [UICollectionViewDelegateFlowLayout](https://developer.apple.com/documentation/uikit/uicollectionviewdelegateflowlayout?language=objc#)
+
+[Diffable Data Sources](https://developer.apple.com/documentation/uikit/uicollectionviewdiffabledatasource#)
