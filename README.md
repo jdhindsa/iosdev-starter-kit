@@ -3,6 +3,12 @@ A starter kit for those interested in iOS programming
 
 ## Swift
 
+## UIKit
+
+### UICollectionViews
+* [Flow Layout](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/UIKit/UICollectionViews/CollectionViews-FlowLayout.md)
+* [Compositional Layout - Storyboard](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/UIKit/UICollectionViews/CollectionViews-CompositionalFlowLayout-Storyboard.md)
+* [Compositional Layout - Code](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/UIKit/UICollectionViews/CollectionViews-CompositionalFlowLayout-Code.md)
 
 ## Foundation
 ### Resources
