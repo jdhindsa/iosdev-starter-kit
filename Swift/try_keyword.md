@@ -41,7 +41,7 @@ It's really never a good idea to use try! unless you are 100% sure that the data
 try! decoder.decode(Person.self, from: personJSONData)
 ```
 
-<img src="Images/try!.png" width="300">
+<img src="Images/try1.png" width="300">
 
 It is crashing because even though the ```decode``` method throws an error, you are forcing the data to be converted even though it's bad.  Therefore, the program will crash.
 
@@ -51,7 +51,7 @@ It is crashing because even though the ```decode``` method throws an error, you 
 try? decoder.decode(Person.self, from: personJSONData)
 ```
 
-<img src="Images/try?.png" width="300">
+<img src="Images/try2.png" width="300">
 
 ```try?``` is effectively saying "attempt to run this method, but if the method returns an error then return nil"
 
@@ -68,4 +68,4 @@ do {
 }
 ```
 
-<img src="Images/do-catch.png" width="300">
+<img src="Images/try3.png" width="300">
