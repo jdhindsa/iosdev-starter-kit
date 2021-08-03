@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureFlowLayout()
-        configureCollectionView()
+        setupCollectionView()
     }
     
     func configureFlowLayout() {
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: 60, height: 60)
     }
 
-    func configureCollectionView() {
+    func setupCollectionView() {
         // Note: The UICollectionView is being embedded in UIView container
         let view = UIView()
         guard let layout = self.layout else { return }
@@ -50,7 +50,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.sampleLabel.text = String(dataSet[indexPath.item])
         cell.sampleLabel.font = UIFont(name: "Courier", size: 20)
         cell.sampleLabel.textColor = UIColor.white
-
         return cell
     }
     
