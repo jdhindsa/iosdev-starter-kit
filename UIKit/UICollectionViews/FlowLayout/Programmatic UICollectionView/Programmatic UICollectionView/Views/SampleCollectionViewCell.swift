@@ -31,6 +31,5 @@ class SampleCollectionViewCell: UICollectionViewCell {
         sampleLabel.translatesAutoresizingMaskIntoConstraints = false
         sampleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate(withIdentifier: "sampleLabelCenterXAnchor")
         sampleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).activate(withIdentifier: "sampleLabelCenterYAnchor")
-
     }
 }

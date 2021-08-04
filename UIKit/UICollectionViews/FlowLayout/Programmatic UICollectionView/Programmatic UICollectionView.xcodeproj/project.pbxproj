@@ -14,6 +14,8 @@
 		34487BBC26B89A290083BA14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34487BBA26B89A290083BA14 /* LaunchScreen.storyboard */; };
 		34487BC726B89BDA0083BA14 /* SampleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34487BC626B89BDA0083BA14 /* SampleCollectionViewCell.swift */; };
 		34487BD726B89D1F0083BA14 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34487BD626B89D1F0083BA14 /* NSLayoutConstraint.swift */; };
+		349EF83626B9F82A00221939 /* ReuseIdentifable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349EF83526B9F82A00221939 /* ReuseIdentifable.swift */; };
+		349EF83A26B9FB5900221939 /* BaseReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349EF83926B9FB5900221939 /* BaseReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		34487BBD26B89A290083BA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34487BC626B89BDA0083BA14 /* SampleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCollectionViewCell.swift; sourceTree = "<group>"; };
 		34487BD626B89D1F0083BA14 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		349EF83526B9F82A00221939 /* ReuseIdentifable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifable.swift; sourceTree = "<group>"; };
+		349EF83926B9FB5900221939 /* BaseReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,7 @@
 				34487BB826B89A290083BA14 /* Assets.xcassets */,
 				34487BBA26B89A290083BA14 /* LaunchScreen.storyboard */,
 				34487BBD26B89A290083BA14 /* Info.plist */,
-				34487BC626B89BDA0083BA14 /* SampleCollectionViewCell.swift */,
+				349EF83F26B9FC5100221939 /* Views */,
 				34487BD926B89D2A0083BA14 /* Helpers */,
 			);
 			path = "Programmatic UICollectionView";
@@ -74,8 +78,18 @@
 			isa = PBXGroup;
 			children = (
 				34487BD626B89D1F0083BA14 /* NSLayoutConstraint.swift */,
+				349EF83526B9F82A00221939 /* ReuseIdentifable.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		349EF83F26B9FC5100221939 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				34487BC626B89BDA0083BA14 /* SampleCollectionViewCell.swift */,
+				349EF83926B9FB5900221939 /* BaseReusableView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +161,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349EF83626B9F82A00221939 /* ReuseIdentifable.swift in Sources */,
 				34487BB426B89A280083BA14 /* ViewController.swift in Sources */,
 				34487BB026B89A280083BA14 /* AppDelegate.swift in Sources */,
+				349EF83A26B9FB5900221939 /* BaseReusableView.swift in Sources */,
 				34487BC726B89BDA0083BA14 /* SampleCollectionViewCell.swift in Sources */,
 				34487BB226B89A280083BA14 /* SceneDelegate.swift in Sources */,
 				34487BD726B89D1F0083BA14 /* NSLayoutConstraint.swift in Sources */,
