@@ -46,7 +46,7 @@ class BaseReusableView: UICollectionReusableView {
         reusableViewImage.bottomAnchor.constraint(equalTo: bottomAnchor).activate(withIdentifier: "reusableViewImageBottomAnchor")
         reusableViewImage.widthAnchor.constraint(equalToConstant: 100).activate(withIdentifier: "reusableViewImageWidthAnchor")
         
-        reusableViewLabel.leadingAnchor.constraint(equalTo: reusableViewImage.trailingAnchor).activate(withIdentifier: "reusableViewLabelLeadingAnchor")
+        reusableViewLabel.leadingAnchor.constraint(equalTo: reusableViewImage.trailingAnchor, constant: 50).activate(withIdentifier: "reusableViewLabelLeadingAnchor")
         reusableViewLabel.topAnchor.constraint(equalTo: reusableViewImage.topAnchor).activate(withIdentifier: "reusableViewLabelTopAnchor")
         reusableViewLabel.bottomAnchor.constraint(equalTo: reusableViewImage.bottomAnchor).activate(withIdentifier: "reusableViewLabelBottomAnchor")
     }

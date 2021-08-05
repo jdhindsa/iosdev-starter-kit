@@ -16,6 +16,8 @@
 		34487BD726B89D1F0083BA14 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34487BD626B89D1F0083BA14 /* NSLayoutConstraint.swift */; };
 		349EF83626B9F82A00221939 /* ReuseIdentifable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349EF83526B9F82A00221939 /* ReuseIdentifable.swift */; };
 		349EF83A26B9FB5900221939 /* BaseReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349EF83926B9FB5900221939 /* BaseReusableView.swift */; };
+		34B1A41026BB519200380911 /* SampleFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1A40F26BB519200380911 /* SampleFlowLayout.swift */; };
+		34B1A41A26BB566600380911 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1A41926BB566600380911 /* AvatarCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		34487BD626B89D1F0083BA14 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		349EF83526B9F82A00221939 /* ReuseIdentifable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifable.swift; sourceTree = "<group>"; };
 		349EF83926B9FB5900221939 /* BaseReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReusableView.swift; sourceTree = "<group>"; };
+		34B1A40F26BB519200380911 /* SampleFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFlowLayout.swift; sourceTree = "<group>"; };
+		34B1A41926BB566600380911 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +67,14 @@
 			isa = PBXGroup;
 			children = (
 				34487BAF26B89A280083BA14 /* AppDelegate.swift */,
+				34487BB826B89A290083BA14 /* Assets.xcassets */,
+				34487BD926B89D2A0083BA14 /* Helpers */,
+				34487BBD26B89A290083BA14 /* Info.plist */,
+				34487BBA26B89A290083BA14 /* LaunchScreen.storyboard */,
+				34B1A40E26BB517400380911 /* Layouts */,
 				34487BB126B89A280083BA14 /* SceneDelegate.swift */,
 				34487BB326B89A280083BA14 /* ViewController.swift */,
-				34487BB826B89A290083BA14 /* Assets.xcassets */,
-				34487BBA26B89A290083BA14 /* LaunchScreen.storyboard */,
-				34487BBD26B89A290083BA14 /* Info.plist */,
 				349EF83F26B9FC5100221939 /* Views */,
-				34487BD926B89D2A0083BA14 /* Helpers */,
 			);
 			path = "Programmatic UICollectionView";
 			sourceTree = "<group>";
@@ -88,8 +93,17 @@
 			children = (
 				34487BC626B89BDA0083BA14 /* SampleCollectionViewCell.swift */,
 				349EF83926B9FB5900221939 /* BaseReusableView.swift */,
+				34B1A41926BB566600380911 /* AvatarCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		34B1A40E26BB517400380911 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				34B1A40F26BB519200380911 /* SampleFlowLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,9 +176,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				349EF83626B9F82A00221939 /* ReuseIdentifable.swift in Sources */,
+				34B1A41026BB519200380911 /* SampleFlowLayout.swift in Sources */,
 				34487BB426B89A280083BA14 /* ViewController.swift in Sources */,
 				34487BB026B89A280083BA14 /* AppDelegate.swift in Sources */,
 				349EF83A26B9FB5900221939 /* BaseReusableView.swift in Sources */,
+				34B1A41A26BB566600380911 /* AvatarCollectionViewCell.swift in Sources */,
 				34487BC726B89BDA0083BA14 /* SampleCollectionViewCell.swift in Sources */,
 				34487BB226B89A280083BA14 /* SceneDelegate.swift in Sources */,
 				34487BD726B89D1F0083BA14 /* NSLayoutConstraint.swift in Sources */,
