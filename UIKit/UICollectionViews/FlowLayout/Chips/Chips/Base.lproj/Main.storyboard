@@ -26,9 +26,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aez-cb-pMh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aez-cb-pMh">
                                         <rect key="frame" x="325.5" y="8" width="80.5" height="59"/>
-                                        <state key="normal" title="Settings"/>
+                                        <state key="normal" backgroundImage="television">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                        </state>
                                         <connections>
                                             <action selector="toggleViewState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8p7-Ut-4Wc"/>
                                         </connections>
@@ -99,6 +101,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="television" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -29,6 +29,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingsButton.contentMode = .scaleAspectFit
         chipsView.isHidden = true
         setupCollectionView()
         registerCells()
