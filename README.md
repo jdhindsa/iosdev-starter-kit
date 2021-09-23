@@ -17,3 +17,6 @@ A starter kit for those interested in iOS programming
 * [NSURLSession](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/Foundation/URL%20Loading%20System/NSURLSession.md)
 ### File System
 * [FileManager](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/Foundation/File%20System/FileManager.md)
+
+## Miscellaneous Language Features
+* [Key Paths](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/Miscellaneous%20Swift%20Language%20Features/LanguageFeatures.md)
