@@ -2,6 +2,7 @@
 A starter kit for those interested in iOS programming
 
 ## Swift
+* [Concurrency & GCD](https://github.com/jdhindsa/iosdev-starter-kit/blob/main/Concurrency%20%26%20GCD/Concurrency%20%26%20GCD.md)
 
 ## UIKit
 
